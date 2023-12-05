@@ -8,7 +8,7 @@ const images = [
   "https://img.freepik.com/premium-vector/product-advertising-hero-image-header-layout_1302-21013.jpg",
 ];
 
-function Slideshow() {
+const Slideshow = () => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
