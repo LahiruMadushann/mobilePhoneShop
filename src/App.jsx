@@ -1,6 +1,7 @@
 import { Text } from "@chakra-ui/react";
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import Header from "./components/Header";
+import Slideshow from "./components/SlideShow";
 
 function App() {
   return (
@@ -16,7 +17,10 @@ function App() {
           <Header />
         </GridItem>
       </Show>
-      <GridItem pl="2" bg="pink.300" area={"nav"}>
+      <GridItem width="100vw" h={10} area={"nav"}>
+        <Slideshow />
+      </GridItem>
+      {/* <GridItem pl="2" bg="pink.300" area={"nav"}>
         Nav
       </GridItem>
       <GridItem pl="2" bg="green.300" area={"main"}>
@@ -24,7 +28,7 @@ function App() {
       </GridItem>
       <GridItem pl="2" bg="blue.300" area={"footer"}>
         Footer
-      </GridItem>
+      </GridItem> */}
     </Grid>
   );
 }
