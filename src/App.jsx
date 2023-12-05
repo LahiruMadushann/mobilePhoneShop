@@ -18,7 +18,7 @@ function App() {
           <Header />
         </GridItem>
       </Show>
-      <GridItem marginTop='-3vw'  area={"nav"}>
+      <GridItem marginTop='-6vh'  area={"nav"}>
         <Navbar />
       </GridItem>
       <GridItem width="100vw"  area={"nav"}>
