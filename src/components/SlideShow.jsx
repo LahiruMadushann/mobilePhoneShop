@@ -28,7 +28,7 @@ const Slideshow = () => {
   return (
     <Center h="80vh">
       <Box>
-        <Image src={images[index]} alt="Slideshow" width='100vw' height='50vh' />
+        <Image src={images[index]} alt="Slideshow" width='100vw' height='65vh' />
         <HStack justify="center" mt='-5'>
           {images.map((image, imageIndex) => (
             <Circle

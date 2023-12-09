@@ -3,6 +3,7 @@ import { Grid, GridItem, Show } from "@chakra-ui/react";
 import Header from "./components/Header";
 import Slideshow from "./components/SlideShow";
 import Navbar from "./components/Navbar";
+import ValueProposition from "./components/ValueProposition";
 
 function App() {
   return (
@@ -21,8 +22,11 @@ function App() {
       <GridItem marginTop='-6vh'  area={"nav"}>
         <Navbar />
       </GridItem>
-      <GridItem width="100vw"  area={"nav"}>
+      <GridItem width="100vw" mt='8.5vh'  area={"nav"}>
         <Slideshow />
+      </GridItem>
+      <GridItem width="100vw" mt='86vh'  area={"nav"}>
+        <ValueProposition />
       </GridItem>
       {/* <GridItem pl="2" bg="pink.300" area={"nav"}>
         Nav
