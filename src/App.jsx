@@ -4,13 +4,14 @@ import Header from "./components/Header";
 import Slideshow from "./components/SlideShow";
 import Navbar from "./components/Navbar";
 import ValueProposition from "./components/ValueProposition";
+import HomePageContent from "./components/HomePageContent";
 
 function App() {
   return (
     <Grid
       templateAreas={{
-        base: `"nav main" "nav footer"`,
-        lg: `"header header" "nav main" "nav footer"`,
+        base: `"nav nav" "nav nav" "nav nav" "main main"`,
+        lg: `"header header" "nav nav" "nav nav" "nav nav" "main main"`,
       }}
       color="blackAlpha.700"
     >
@@ -27,6 +28,9 @@ function App() {
       </GridItem>
       <GridItem width="100vw" mt='86vh'  area={"nav"}>
         <ValueProposition />
+      </GridItem>
+      <GridItem width="100vw" mt='2vh'  area={"main"}>
+        <HomePageContent />
       </GridItem>
       {/* <GridItem pl="2" bg="pink.300" area={"nav"}>
         Nav
