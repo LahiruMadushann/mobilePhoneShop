@@ -14,5 +14,10 @@ const theme = extendTheme({
       },
     }),
   },
+  colors: {
+    myColor: {
+      500: '#3839af', // your color
+    },
+  },
 })
 export default theme; 

@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, GridItem } from "@chakra-ui/react";
 import PhoneCategory from "./PhoneCategory";
+import DiscountSide from "./DiscountSide";
 
 const HomePageContent = () => {
   return (
@@ -9,7 +10,7 @@ const HomePageContent = () => {
                   "side category"
                   "side phone"`}
       gridTemplateRows={"50px 1fr 30px"}
-      gridTemplateColumns={"150px 1fr"}
+      gridTemplateColumns={"25vw 1fr"}
       h="200px"
       gap="1"
       color="blackAlpha.700"
@@ -17,7 +18,7 @@ const HomePageContent = () => {
     >
       
       <GridItem padding={3} area={"side"}>
-        side
+        <DiscountSide />
       </GridItem>
       <GridItem  area={"category"}>
         <PhoneCategory />
