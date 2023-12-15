@@ -13,6 +13,6 @@ public class PhoneCategorySave {
     private String phoneId;
     private String phoneCategory;
     private String phoneName;
-    private String phonePrice;
+    private double phonePrice;
     private String phoneImage;
 }

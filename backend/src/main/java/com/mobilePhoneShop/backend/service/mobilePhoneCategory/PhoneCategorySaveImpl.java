@@ -21,6 +21,8 @@ public class PhoneCategorySaveImpl implements PhoneCategorySaveService{
         return PhoneCategory.builder()
                 .phoneId(phoneCategory.getPhoneId())
                 .phoneCategory(phoneCategory.getPhoneCategory())
+                .phoneName(phoneCategory.getPhoneName())
+                .phonePrice(phoneCategory.getPhonePrice())
                 .phoneImage(phoneCategory.getPhoneImage())
                 .build();
     }
