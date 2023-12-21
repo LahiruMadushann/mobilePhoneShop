@@ -1,7 +1,8 @@
-import React from "react";
+
 import { Grid, GridItem } from "@chakra-ui/react";
 import PhoneCategory from "./PhoneCategory";
 import DiscountSide from "./DiscountSide";
+import MobilePhones from "./MobilePhones";
 
 const HomePageContent = () => {
   return (
@@ -24,7 +25,7 @@ const HomePageContent = () => {
         <PhoneCategory />
       </GridItem>
       <GridItem mt='7vh' area={"phone"}>
-        phone
+        <MobilePhones />
       </GridItem>
     </Grid>
     

@@ -7,6 +7,10 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 @Service
 public class PhoneCategorySaveImpl implements PhoneCategorySaveService{
 
@@ -26,4 +30,20 @@ public class PhoneCategorySaveImpl implements PhoneCategorySaveService{
                 .phoneImage(phoneCategory.getPhoneImage())
                 .build();
     }
+
+    @Override
+    public List<PhoneCategory> getAllPhoneCategories() {
+        List<PhoneCategorySave> phoneCategorySaves = phoneCategorySaveRepo.findAll();
+        return phoneCategorySaves.stream()
+                .map(phoneCategorySave -> PhoneCategory.builder()
+                        .phoneId(phoneCategorySave.getPhoneId())
+                        .phoneCategory(phoneCategorySave.getPhoneCategory())
+                        .phoneName(phoneCategorySave.getPhoneName())
+                        .phonePrice(phoneCategorySave.getPhonePrice())
+                        .phoneImage(phoneCategorySave.getPhoneImage())
+                        .build())
+                .collect(Collectors.toList());
+    }
+
+
 }
