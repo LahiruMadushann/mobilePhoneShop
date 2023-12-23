@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Slideshow from "./components/SlideShow";
 import Navbar from "./components/Navbar";
 import ValueProposition from "./components/ValueProposition";
-import HomePageContent from "./components/HomePageContent";
+import HomePageContent from "./pages/HomePageContent";
 
 function App() {
   return (
