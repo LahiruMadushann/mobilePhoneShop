@@ -1,4 +1,4 @@
-import {HStack} from "@chakra-ui/react";
+import { Grid, GridItem} from "@chakra-ui/react";
 import PhoneCard from "./PhoneCard";
 import useMobilePhoneData from "../hooks/useMobilePhoneData";
 
@@ -12,11 +12,16 @@ const MobilePhones = () => {
     if (error) return <div>Error: {error.message}</div>;
 
     return (
-        <HStack spacing={4}>
+        <Grid
+            templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(4, 1fr)", lg: "repeat(5, 1fr)" }}
+            gap={6}
+        >
             {data && data.map((phone, index) => (
-                <PhoneCard key={index} phone={phone} />
+                <GridItem key={index} colSpan={1}>
+                <PhoneCard  phone={phone} />
+                </GridItem>
             ))}
-        </HStack>
+        </Grid>
     );
 }
 export default MobilePhones;
