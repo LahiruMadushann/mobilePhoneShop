@@ -1,6 +1,4 @@
 package com.mobilePhoneShop.backend.controller.userRegister;
-
-import com.mobilePhoneShop.backend.dto.PhoneCategory;
 import com.mobilePhoneShop.backend.dto.UserRegisterDTO;
 import com.mobilePhoneShop.backend.model.userRegister.UserRegister;
 import com.mobilePhoneShop.backend.service.userRegister.UserRegisterService;
@@ -41,6 +39,17 @@ public class UserRegisterController {
             return new ResponseEntity<>(user, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    }
+    @PutMapping("/update/{userId}")
+    public ResponseEntity<UserRegisterDTO> updateUser(@PathVariable String userId, @RequestBody UserRegister userRegister){
+        log.info("Update User");
+
+        UserRegisterDTO updateUser = userRegisterService.update(userId, userRegister);
+
+        if (updateUser != null) {
+            return new ResponseEntity<>(updateUser, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
 }

@@ -81,4 +81,37 @@ public class UserRegisterImpl implements UserRegisterService {
         }
         return null;
     }
+
+    @Override
+    public UserRegisterDTO update(String userId, UserRegister userRegister) {
+        UserRegister existingUser = userRegisterRepo.findById(userId).orElse(null);
+
+        if (existingUser != null) {
+            existingUser.setUserName(userRegister.getUserName());
+            existingUser.setFirstName(userRegister.getFirstName());
+            existingUser.setLastName(userRegister.getLastName());
+            existingUser.setAge(userRegister.getAge());
+            existingUser.setPassword(userRegister.getPassword());
+            existingUser.setEmail(userRegister.getEmail());
+            existingUser.setGender(userRegister.getGender());
+            existingUser.setDistrict(userRegister.getDistrict());
+            existingUser.setCity(userRegister.getCity());
+
+            UserRegister updateUser = userRegisterRepo.save(existingUser);
+
+            return UserRegisterDTO.builder()
+                    .userId(updateUser.getUserId())
+                    .userName(updateUser.getUserName())
+                    .firstName(updateUser.getFirstName())
+                    .lastName(updateUser.getLastName())
+                    .age(updateUser.getAge())
+                    .password(updateUser.getPassword())
+                    .email(updateUser.getEmail())
+                    .gender(updateUser.getGender())
+                    .district(updateUser.getDistrict())
+                    .city(updateUser.getCity())
+                    .build();
+        }
+        return null;
+    }
 }

@@ -9,4 +9,5 @@ public interface UserRegisterService {
     UserRegisterDTO save(UserRegister userRegister);
     List<UserRegisterDTO> getAllUsers();
     UserRegisterDTO findByUsernameAndPassword(String userName, String password);
+    UserRegisterDTO update(String userId, UserRegister userRegister);
 }
