@@ -52,4 +52,11 @@ public class UserRegisterController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @DeleteMapping("/delete/{userId}")
+    public ResponseEntity<Void> deleteUser(@PathVariable String userId) {
+        log.info("Delete User with ID: {}", userId);
+        userRegisterService.deleteUserById(userId);
+        return ResponseEntity.noContent().build();
+    }
+
 }

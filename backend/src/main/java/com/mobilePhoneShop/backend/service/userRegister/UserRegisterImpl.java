@@ -114,4 +114,9 @@ public class UserRegisterImpl implements UserRegisterService {
         }
         return null;
     }
+
+    @Override
+    public void deleteUserById(String userId) {
+        userRegisterRepo.deleteById(userId);
+    }
 }

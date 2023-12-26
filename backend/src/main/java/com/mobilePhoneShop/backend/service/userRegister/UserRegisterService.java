@@ -10,4 +10,5 @@ public interface UserRegisterService {
     List<UserRegisterDTO> getAllUsers();
     UserRegisterDTO findByUsernameAndPassword(String userName, String password);
     UserRegisterDTO update(String userId, UserRegister userRegister);
+    void deleteUserById(String userId);
 }
