@@ -1,8 +1,8 @@
 
 import { Grid, GridItem } from "@chakra-ui/react";
-import PhoneCategory from "../components/PhoneCategory";
-import DiscountSide from "../components/DiscountSide";
-import MobilePhones from "../components/MobilePhones";
+import PhoneCategory from "./PhoneCategory";
+import DiscountSide from "./DiscountSide";
+import MobilePhones from "./MobilePhones";
 
 const HomePageContent = () => {
   return (

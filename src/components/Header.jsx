@@ -1,5 +1,5 @@
 import React from "react";
-import { Link as ReactRouterLink } from "react-router-dom";
+import { Link, Link as ReactRouterLink } from "react-router-dom";
 import { FaUser } from 'react-icons/fa';
 import {
   Grid,
@@ -25,7 +25,7 @@ const Header = () => {
       <Text>No additional fees</Text>
       <Spacer />
       <FaUser />
-      <ChakraLink to="/home">Register or Sign In</ChakraLink>
+      <Link className="underline " to={'/loginRegister'}>Register or Sign In</Link>
       
     </HStack>
   );
