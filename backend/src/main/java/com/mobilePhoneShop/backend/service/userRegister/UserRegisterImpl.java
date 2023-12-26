@@ -62,4 +62,23 @@ public class UserRegisterImpl implements UserRegisterService {
                         .build())
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public UserRegisterDTO findByUsernameAndPassword(String userName, String password) {
+        UserRegister user = userRegisterRepo.findByUserNameAndPassword(userName, password);
+        if (user != null) {
+            return UserRegisterDTO.builder()
+                    .userId(user.getUserId())
+                    .userName(user.getUserName())
+                    .firstName(user.getFirstName())
+                    .lastName(user.getLastName())
+                    .age(user.getAge())
+                    .email(user.getEmail())
+                    .gender(user.getGender())
+                    .district(user.getDistrict())
+                    .city(user.getCity())
+                    .build();
+        }
+        return null;
+    }
 }

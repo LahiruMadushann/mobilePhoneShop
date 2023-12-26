@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface UserRegisterRepo extends MongoRepository<UserRegister,String> {
     List<UserRegister> findAll();
+
+    UserRegister findByUserNameAndPassword(String userName, String password);
 }

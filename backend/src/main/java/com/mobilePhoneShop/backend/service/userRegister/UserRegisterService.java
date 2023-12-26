@@ -8,4 +8,5 @@ import java.util.List;
 public interface UserRegisterService {
     UserRegisterDTO save(UserRegister userRegister);
     List<UserRegisterDTO> getAllUsers();
+    UserRegisterDTO findByUsernameAndPassword(String userName, String password);
 }

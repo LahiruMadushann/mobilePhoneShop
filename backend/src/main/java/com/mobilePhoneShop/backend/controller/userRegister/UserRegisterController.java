@@ -33,4 +33,14 @@ public class UserRegisterController {
         return new ResponseEntity<>(userRegisterList,HttpStatus.OK);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<UserRegisterDTO> loginUser(@RequestBody UserRegister userRegister){
+        log.info("Login User");
+        UserRegisterDTO user = userRegisterService.findByUsernameAndPassword(userRegister.getUserName(), userRegister.getPassword());
+        if (user != null) {
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    }
+
 }
