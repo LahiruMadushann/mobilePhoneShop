@@ -1,5 +1,4 @@
-import { HStack, Text, Divider  } from '@chakra-ui/react'
-import React from 'react'
+import { HStack, Text } from '@chakra-ui/react'
 
 const PhoneCategory = () => {
   return (

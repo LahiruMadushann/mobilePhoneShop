@@ -15,8 +15,13 @@ import java.util.stream.Collectors;
 @Service
 public class UserRegisterImpl implements UserRegisterService {
 
+    private final UserRegisterRepo userRegisterRepo;
+
     @Autowired
-    private UserRegisterRepo userRegisterRepo;
+    public UserRegisterImpl(UserRegisterRepo userRegisterRepo) {
+        this.userRegisterRepo = userRegisterRepo;
+    }
+
 
 //    @Autowired
 //    private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -55,6 +60,7 @@ public class UserRegisterImpl implements UserRegisterService {
                         .firstName(userRegister.getFirstName())
                         .lastName(userRegister.getLastName())
                         .age(userRegister.getAge())
+                        .password(userRegister.getPassword())
                         .email(userRegister.getEmail())
                         .gender(userRegister.getGender())
                         .district(userRegister.getDistrict())
@@ -73,6 +79,7 @@ public class UserRegisterImpl implements UserRegisterService {
                     .firstName(user.getFirstName())
                     .lastName(user.getLastName())
                     .age(user.getAge())
+                    .password(user.getPassword())
                     .email(user.getEmail())
                     .gender(user.getGender())
                     .district(user.getDistrict())

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("api1/v1/user")
 @Slf4j
@@ -17,12 +18,12 @@ import java.util.List;
 public class UserRegisterController {
     private final UserRegisterService userRegisterService;
 
+    @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("/register")
     public ResponseEntity<UserRegisterDTO> saveUser(@RequestBody UserRegister userRegister){
         log.info("Save User");
         return new ResponseEntity<>(userRegisterService.save(userRegister), HttpStatus.CREATED);
     }
-
     @CrossOrigin(origins = "http://localhost:5173")
     @GetMapping("/getAllUsers")
     public ResponseEntity<List<UserRegisterDTO>> getAllUsers() {
@@ -30,11 +31,13 @@ public class UserRegisterController {
         List<UserRegisterDTO> userRegisterList =userRegisterService.getAllUsers();
         return new ResponseEntity<>(userRegisterList,HttpStatus.OK);
     }
-
+    @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("/login")
     public ResponseEntity<UserRegisterDTO> loginUser(@RequestBody UserRegister userRegister){
-        log.info("Login User");
+        log.info("Login User: {}", userRegister);
+        System.out.println("User Reg "+userRegister);
         UserRegisterDTO user = userRegisterService.findByUsernameAndPassword(userRegister.getUserName(), userRegister.getPassword());
+        log.info("Finding user by username and password. Username: {}, Password: {}", userRegister.getUserName(), userRegister.getPassword());
         if (user != null) {
             return new ResponseEntity<>(user, HttpStatus.OK);
         }
