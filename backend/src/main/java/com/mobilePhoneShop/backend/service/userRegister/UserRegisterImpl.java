@@ -5,6 +5,7 @@ import com.mobilePhoneShop.backend.dto.UserRegisterDTO;
 import com.mobilePhoneShop.backend.model.mobilePhoneCategory.PhoneCategorySave;
 import com.mobilePhoneShop.backend.model.userRegister.UserRegister;
 import com.mobilePhoneShop.backend.repo.userRegister.UserRegisterRepo;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -69,6 +70,7 @@ public class UserRegisterImpl implements UserRegisterService {
                 .collect(Collectors.toList());
     }
 
+
     @Override
     public UserRegisterDTO findByUsernameAndPassword(String userName, String password) {
         UserRegister user = userRegisterRepo.findByUserNameAndPassword(userName, password);
@@ -121,6 +123,7 @@ public class UserRegisterImpl implements UserRegisterService {
         }
         return null;
     }
+
 
     @Override
     public void deleteUserById(String userId) {
