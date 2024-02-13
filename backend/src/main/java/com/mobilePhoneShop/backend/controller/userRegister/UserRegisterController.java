@@ -51,7 +51,7 @@ public class UserRegisterController {
 
             return ResponseEntity.ok()
                     .header("Authorization", "Bearer " + token)
-                    .body(user); // Changed this line to return the user DTO directly
+                    .body(user);
         }
 
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
