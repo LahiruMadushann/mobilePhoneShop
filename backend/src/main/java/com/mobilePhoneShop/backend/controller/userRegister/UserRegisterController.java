@@ -2,6 +2,7 @@ package com.mobilePhoneShop.backend.controller.userRegister;
 import com.mobilePhoneShop.backend.dto.UserRegisterDTO;
 import com.mobilePhoneShop.backend.model.userRegister.UserRegister;
 import com.mobilePhoneShop.backend.service.userRegister.UserRegisterService;
+import com.mobilePhoneShop.backend.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserRegisterController {
     private final UserRegisterService userRegisterService;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("/register")
@@ -43,14 +47,16 @@ public class UserRegisterController {
         log.info("Finding user by username and password. Username: {}, Password: {}", userRegister.getUserName(), userRegister.getPassword());
 
         if (user != null) {
+            String token = jwtUtil.generateToken(user.getUserName(), user.getPassword());
 
             return ResponseEntity.ok()
-                    .header("Authorization", "Bearer " )
-                    .body(userRegisterService.findByUsernameAndPassword(user.getUserName(), user.getPassword()));
+                    .header("Authorization", "Bearer " + token)
+                    .body(user); // Changed this line to return the user DTO directly
         }
 
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
+
 
     @PutMapping("/update/{userId}")
     public ResponseEntity<UserRegisterDTO> updateUser(@PathVariable String userId, @RequestBody UserRegister userRegister){
