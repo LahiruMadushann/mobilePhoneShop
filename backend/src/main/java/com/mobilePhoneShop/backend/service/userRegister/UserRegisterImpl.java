@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -93,21 +94,43 @@ public class UserRegisterImpl implements UserRegisterService {
 
     @Override
     public UserRegisterDTO update(String userId, UserRegister userRegister) {
-        UserRegister existingUser = userRegisterRepo.findById(userId).orElse(null);
+        Optional<UserRegister> optionalExistingUser = userRegisterRepo.findById(userId);
 
-        if (existingUser != null) {
-            existingUser.setUserName(userRegister.getUserName());
-            existingUser.setFirstName(userRegister.getFirstName());
-            existingUser.setLastName(userRegister.getLastName());
-            existingUser.setAge(userRegister.getAge());
-            existingUser.setPassword(userRegister.getPassword());
-            existingUser.setEmail(userRegister.getEmail());
-            existingUser.setGender(userRegister.getGender());
-            existingUser.setDistrict(userRegister.getDistrict());
-            existingUser.setCity(userRegister.getCity());
+        if (optionalExistingUser.isPresent()) {
+            UserRegister existingUser = optionalExistingUser.get();
 
+            if (userRegister.getUserName() != null) {
+                existingUser.setUserName(userRegister.getUserName());
+            }
+            if (userRegister.getFirstName() != null) {
+                existingUser.setFirstName(userRegister.getFirstName());
+            }
+            if (userRegister.getLastName() != null) {
+                existingUser.setLastName(userRegister.getLastName());
+            }
+            if (userRegister.getAge() != 0) {
+                existingUser.setAge(userRegister.getAge());
+            }
+            if (userRegister.getPassword() != null) {
+                existingUser.setPassword(userRegister.getPassword());
+            }
+            if (userRegister.getEmail() != null) {
+                existingUser.setEmail(userRegister.getEmail());
+            }
+            if (userRegister.getGender() != null) {
+                existingUser.setGender(userRegister.getGender());
+            }
+            if (userRegister.getDistrict() != null) {
+                existingUser.setDistrict(userRegister.getDistrict());
+            }
+            if (userRegister.getCity() != null) {
+                existingUser.setCity(userRegister.getCity());
+            }
+
+            // Update the user in the database
             UserRegister updateUser = userRegisterRepo.save(existingUser);
-
+            
+            // Return the updated user details
             return UserRegisterDTO.builder()
                     .userId(updateUser.getUserId())
                     .userName(updateUser.getUserName())
