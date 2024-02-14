@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const useMobilePhoneData = (url) => {
+const getAllData = (url) => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -21,4 +21,4 @@ const useMobilePhoneData = (url) => {
     return { data, loading, error };
 }
 
-export default useMobilePhoneData;
+export default getAllData;

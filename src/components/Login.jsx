@@ -9,6 +9,7 @@ import {
 
 } from '@chakra-ui/react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -17,6 +18,7 @@ const Login = () => {
     const [isLoading, setIsLoading] = useState(false);
     const toast = useToast();
 
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -38,6 +40,7 @@ const Login = () => {
                 status: 'success',
                 isClosable: true,
             });
+            navigate('/adminPage');
 
         } catch (error) {
             console.error('Login error:', error);

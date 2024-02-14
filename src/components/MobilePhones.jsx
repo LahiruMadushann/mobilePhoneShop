@@ -1,12 +1,12 @@
 import { Grid, GridItem} from "@chakra-ui/react";
 import PhoneCard from "./PhoneCard";
-import useMobilePhoneData from "../hooks/useMobilePhoneData";
+import getAllData from "../hooks/getAllData";
 
 
 const MobilePhones = () => {
 
 
-    const { data, loading, error } = useMobilePhoneData("http://localhost:8080/api1/v1/mobilePhone/getAllmobilePhones");
+    const { data, loading, error } = getAllData("http://localhost:8080/api1/v1/mobilePhone/getAllmobilePhones");
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
