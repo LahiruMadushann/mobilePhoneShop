@@ -12,21 +12,22 @@ import {
     Text
 } from '@chakra-ui/react'
 import getAllData from "../hooks/getAllData";
-import axios from "axios";
+import { useState } from 'react';
+import UpdateUserForm from "../components/UpdateUserForm";
 
 
 const AdminPage = () => {
 
     const { data, loading, error } = getAllData("http://localhost:8080/api1/v1/user/getAllUsers");
+    const [selectedUserId, setSelectedUserId] = useState(null);
 
-    const handleUpdate = async (userId) => {
-        try {
-            // Make an HTTP PUT request to update the user data
-            await axios.put(`http://localhost:8080/api1/v1/user/update/${userId}`);
+    const handleUpdate = (userId) => {
+        setSelectedUserId(userId);
+    };
 
-        } catch (error) {
-            console.error('Error updating user:', error);
-        }
+    const handleCloseModal = () => {
+        setSelectedUserId(null);
+
     };
 
     console.log(data)
@@ -60,7 +61,14 @@ const AdminPage = () => {
                             <Td>{user.email}</Td>
                             <Td>{user.city}</Td>
                             <Td>{user.district}</Td>
-                            <Td><Button colorScheme='blue' onClick={() => handleUpdate(user.userId)}>Update</Button></Td>
+                            <Td>
+                                <Button colorScheme='blue' onClick={() => handleUpdate(user.userId)}>
+                                    Update
+                                </Button>
+                                {selectedUserId === user.userId && (
+                                    <UpdateUserForm isOpen={true} onClose={handleCloseModal} userId={user.userId} />
+                                )}
+                            </Td>
                         </Tr>
                     ))}
                 </Tbody>

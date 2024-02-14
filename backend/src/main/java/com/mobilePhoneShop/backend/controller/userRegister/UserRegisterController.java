@@ -57,7 +57,7 @@ public class UserRegisterController {
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
-
+    @CrossOrigin(origins = "http://localhost:5173")
     @PutMapping("/update/{userId}")
     public ResponseEntity<UserRegisterDTO> updateUser(@PathVariable String userId, @RequestBody UserRegister userRegister){
         log.info("Update User");
@@ -70,6 +70,7 @@ public class UserRegisterController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @CrossOrigin(origins = "http://localhost:5173")
     @DeleteMapping("/delete/{userId}")
     public ResponseEntity<Void> deleteUser(@PathVariable String userId) {
         log.info("Delete User with ID: {}", userId);
