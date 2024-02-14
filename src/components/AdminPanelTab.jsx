@@ -1,5 +1,6 @@
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import AdminPage from "../pages/AdminPage";
+import DeleteUser from "./DeleteUser";
 
 const AdminPanelTab = () => {
   return (
@@ -18,7 +19,7 @@ const AdminPanelTab = () => {
               <AdminPage />
           </TabPanel>
           <TabPanel>
-            <p>Delete!</p>
+            <DeleteUser />
           </TabPanel>
         </TabPanels>
       </Tabs>

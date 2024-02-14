@@ -9,7 +9,7 @@ const UpdateUserForm = ({ isOpen, onClose, userId }) => {
 
     const handleUpdate = async () => {
         try {
-            // Make an HTTP PUT request to update the user data
+
             await axios.put(`http://localhost:8080/api1/v1/user/update/${userId}`, updatedData);
             onClose(); // Close the modal after updating
             window.location.reload(true);
