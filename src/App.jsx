@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import LoginRegisterPage from "./pages/LoginRegisterPage";
-import AdminPage from "./pages/AdminPage";
+
+import AdminPanelTab from "./components/AdminPanelTab";
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/loginRegister" element={<LoginRegisterPage />} />
-        <Route path={"/adminPage"} element={<AdminPage />}  />
+        <Route path={"/adminPage"} element={<AdminPanelTab />}  />
       </Routes>
     </Router>
   );
